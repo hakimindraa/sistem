@@ -1,0 +1,7 @@
+tests/
+writable/debugbar/
+writable/logs/
+.git/
+.vscode/
+node_modules/
+*.md
