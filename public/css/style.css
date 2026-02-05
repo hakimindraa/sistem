@@ -501,33 +501,204 @@ body {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
+  /* Header */
   .modern-header {
     padding: var(--space-3) var(--space-4);
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--space-3);
+  }
+  
+  .modern-header nav {
+    width: 100%;
+    flex-direction: column !important;
+    gap: var(--space-2) !important;
+  }
+  
+  .modern-header nav a,
+  .modern-header nav button {
+    width: 100%;
+    justify-content: center;
   }
   
   .search-bar {
     max-width: 100%;
-    order: 3;
+    width: 100%;
   }
   
+  /* Logo */
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  .logo-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
+  
+  /* Stat Cards */
   .stat-cards {
     grid-template-columns: 1fr;
+    gap: var(--space-3);
   }
   
+  .stat-card {
+    padding: var(--space-4);
+  }
+  
+  /* Table */
   .modern-table {
     display: block;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
+  .modern-table thead th,
+  .modern-table tbody td {
+    padding: var(--space-3);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+  
+  /* Cards */
   .modern-card-body {
     padding: var(--space-4);
   }
   
+  .modern-card-header {
+    padding: var(--space-4);
+  }
+  
+  .modern-card-header h4 {
+    font-size: 1.1rem;
+  }
+  
+  /* Buttons */
+  .btn-modern {
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.8125rem;
+  }
+  
+  .btn-icon {
+    padding: var(--space-2);
+  }
+  
+  /* Page Container */
+  .page-container {
+    padding: var(--space-4);
+  }
+  
+  /* Page Header */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  
+  .page-header a {
+    width: 100%;
+  }
+  
+  .page-title {
+    font-size: 1.25rem;
+  }
+  
+  /* Action Buttons */
+  .action-buttons {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .action-buttons .btn-modern {
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  /* Toast */
+  .toast {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    left: var(--space-4);
+    max-width: calc(100% - 2rem);
+  }
+  
+  /* Login Card */
+  .login-card {
+    padding: var(--space-6) var(--space-5);
+  }
+  
+  .login-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .login-logo {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+  
+  /* Dashboard Grid */
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Two Column Layout */
+  .two-column {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Welcome Banner */
+  .welcome-banner {
+    padding: var(--space-5) !important;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .welcome-banner h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Form */
+  .form-floating-custom input,
+  .form-floating-custom select,
+  .form-input {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .page-container {
+    padding: var(--space-3);
+  }
+  
+  .stat-card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+  
+  .stat-card-info h3 {
+    font-size: 1.25rem;
+  }
+  
+  .stat-card-info p {
+    font-size: 0.8125rem;
+  }
+  
+  .modern-table thead th,
+  .modern-table tbody td {
+    padding: var(--space-2);
+    font-size: 0.75rem;
+  }
+  
   .btn-modern {
     padding: var(--space-2) var(--space-3);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .login-card {
+    padding: var(--space-5) var(--space-4);
   }
 }
 
