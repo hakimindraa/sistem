@@ -17,6 +17,18 @@ class App extends BaseConfig
      * E.g., http://example.com/
      */
     public string $baseURL = 'http://localhost:8080/';
+    
+    public function __construct()
+    {
+        parent::__construct();
+        
+        // Auto-detect base URL for Railway deployment
+        if (getenv('RAILWAY_ENVIRONMENT')) {
+            $this->baseURL = 'https://' . getenv('RAILWAY_PUBLIC_DOMAIN') . '/';
+        } elseif (getenv('app.baseURL')) {
+            $this->baseURL = getenv('app.baseURL');
+        }
+    }
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
