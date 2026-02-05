@@ -141,7 +141,7 @@
                 if (!res.ok) {
                     if (res.status === 401) {
                         showToast('Sesi berakhir, silakan login ulang', 'error');
-                        setTimeout(() => window.location.href = '/auth/login', 1500);
+                        setTimeout(() => window.location.href = '/login', 1500);
                         return;
                     }
                     showToast('Gagal mengambil data mahasiswa', 'error');
@@ -181,7 +181,7 @@
                     if (res.status === 401) {
                         showToast('Sesi berakhir, silakan login ulang', 'error');
                         localStorage.removeItem('token');
-                        setTimeout(() => window.location.href = '/auth/login', 1500);
+                        setTimeout(() => window.location.href = '/login', 1500);
                         return;
                     }
                     const data = await res.json();
@@ -206,7 +206,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const token = localStorage.getItem('token');
             if (!token) {
-                window.location.href = '/auth/login';
+                window.location.href = '/login';
                 return;
             }
             loadData();

@@ -134,7 +134,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const token = localStorage.getItem('token');
             if (!token) {
-                window.location.href = '/auth/login';
+                window.location.href = '/login';
                 return;
             }
         });
@@ -165,7 +165,7 @@
                 } else if (res.status === 401) {
                     showToast('Sesi berakhir, silakan login ulang', 'error');
                     localStorage.removeItem('token');
-                    setTimeout(() => window.location.href = '/auth/login', 1500);
+                    setTimeout(() => window.location.href = '/login', 1500);
                 } else {
                     const data = await res.json();
                     showToast(data.message || 'Gagal menambah data', 'error');

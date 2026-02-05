@@ -144,7 +144,7 @@
       // Check login
       const token = localStorage.getItem('token');
       if (!token) {
-        window.location.href = '/auth/login';
+        window.location.href = '/login';
         return;
       }
 
@@ -164,7 +164,7 @@
             if (res.status === 401) {
               showToast('Sesi berakhir, silakan login ulang', 'error');
               localStorage.removeItem('token');
-              setTimeout(() => window.location.href = '/auth/login', 1500);
+              setTimeout(() => window.location.href = '/login', 1500);
               return;
             }
             throw new Error('Failed to fetch');
@@ -272,7 +272,7 @@
             if (res.status === 401) {
               showToast('Sesi berakhir, login ulang', 'error');
               localStorage.removeItem('token');
-              setTimeout(() => window.location.href = '/auth/login', 1500);
+              setTimeout(() => window.location.href = '/login', 1500);
               return;
             }
             throw new Error('Delete failed');
@@ -305,7 +305,7 @@
             localStorage.removeItem('token');
             localStorage.removeItem('token_expires');
             showToast('Logout berhasil', 'success');
-            setTimeout(() => window.location.href = '/auth/login', 1000);
+            setTimeout(() => window.location.href = '/login', 1000);
           }
         });
       }

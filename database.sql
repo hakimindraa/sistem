@@ -28,3 +28,12 @@ INSERT INTO `mahasiswa` (`nim`, `nama`, `angkatan`, `jurusan`) VALUES
 ('2021001', 'Budi Santoso', 2021, 'Teknik Informatika'),
 ('2021002', 'Siti Nurhaliza', 2021, 'Sistem Informasi'),
 ('2022001', 'Ahmad Fauzi', 2022, 'Teknik Informatika');
+
+-- Table: revoked_tokens
+CREATE TABLE IF NOT EXISTS `revoked_tokens` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `jti` varchar(255) NOT NULL,
+  `expired_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `jti` (`jti`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
