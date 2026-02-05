@@ -26,14 +26,14 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => getenv('database.default.hostname') ?: 'localhost',
-        'username'     => getenv('database.default.username') ?: 'root',
-        'password'     => getenv('database.default.password') ?: '',
-        'database'     => getenv('database.default.database') ?: 'sistem',
+        'hostname'     => 'localhost',
+        'username'     => 'root',
+        'password'     => '',
+        'database'     => 'sistem',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
-        'DBDebug'      => getenv('CI_ENVIRONMENT') !== 'production',
+        'DBDebug'      => true,
         'charset'      => 'utf8mb4',
         'DBCollat'     => 'utf8mb4_general_ci',
         'swapPre'      => '',
@@ -41,7 +41,7 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => getenv('database.default.port') ?: 3306,
+        'port'         => 3306,
         'numberNative' => false,
         'foundRows'    => false,
         'dateFormat'   => [
@@ -192,6 +192,26 @@ class Database extends Config
     public function __construct()
     {
         parent::__construct();
+
+        // Override database config with environment variables for Railway
+        if (getenv('MYSQLHOST')) {
+            $this->default['hostname'] = getenv('MYSQLHOST');
+        }
+        if (getenv('MYSQLUSER')) {
+            $this->default['username'] = getenv('MYSQLUSER');
+        }
+        if (getenv('MYSQLPASSWORD')) {
+            $this->default['password'] = getenv('MYSQLPASSWORD');
+        }
+        if (getenv('MYSQLDATABASE')) {
+            $this->default['database'] = getenv('MYSQLDATABASE');
+        }
+        if (getenv('MYSQLPORT')) {
+            $this->default['port'] = (int) getenv('MYSQLPORT');
+        }
+        
+        // Set DBDebug based on environment
+        $this->default['DBDebug'] = ENVIRONMENT !== 'production';
 
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
