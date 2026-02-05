@@ -76,6 +76,28 @@ class Auth extends ResourceController
         ]);
     }
 
+    public function resetPassword()
+    {
+        $data = $this->request->getJSON(true);
+        if (!isset($data['username']) || !isset($data['new_password'])) {
+            return $this->failValidationErrors('username & new_password wajib');
+        }
+
+        $user = $this->userModel->where('username', $data['username'])->first();
+        if (!$user) {
+            return $this->failNotFound('User tidak ditemukan');
+        }
+
+        // Update password
+        $newPasswordHash = password_hash($data['new_password'], PASSWORD_DEFAULT);
+        $this->userModel->update($user['id'], ['password' => $newPasswordHash]);
+
+        return $this->respond([
+            'message' => 'Password berhasil direset',
+            'username' => $data['username']
+        ]);
+    }
+
     /**
      * Logout: revoke token on server side by saving jti into revoked_tokens table.
      * This endpoint must be protected by jwt filter (so only valid tokens can call it).

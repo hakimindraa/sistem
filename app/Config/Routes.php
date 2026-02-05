@@ -23,8 +23,10 @@ $routes->get('mahasiswa/edit/(:segment)', 'Mahasiswa::edit/$1');
 
 // auth view (login) - pakai controller Auth di App\Controllers
 // jika kamu memilih menampilkan view via controller Auth::login
+$routes->get('login', 'Auth::login');
 $routes->get('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout'); // optional: jika membuat method logout
+$routes->get('reset-password', 'Auth::resetPassword');
 
 // ----------------------
 // API routes (namespace App\Controllers\Api)
@@ -33,6 +35,7 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], function ($routes)
     // public auth endpoints (API)
     $routes->post('auth/register', 'Auth::register');
     $routes->post('auth/login', 'Auth::login');
+    $routes->post('auth/reset-password', 'Auth::resetPassword');
 
     // protected mahasiswa routes (filter jwt)
     $routes->group('', ['filter' => 'jwt'], function ($routes) {

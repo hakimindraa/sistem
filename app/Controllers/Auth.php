@@ -7,6 +7,11 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
+    public function resetPassword()
+    {
+        return view('auth/reset_password');
+    }
+
     public function logout()
     {
         // contoh sederhana: hapus token client (JS) lalu redirect
